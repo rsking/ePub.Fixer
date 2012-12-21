@@ -13,7 +13,7 @@ namespace RossKing.EPub.Services.Contracts
     /// Interface for checking files.
     /// </summary>
     [InheritedExport]
-    public interface IChecker
+    public interface IXmlChecker
     {
         /// <summary>
         /// Checks the head element.

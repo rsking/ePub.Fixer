@@ -7,9 +7,9 @@
 namespace RossKing.EPub.Services
 {
     /// <summary>
-    /// Base implementation of the <see cref="Contracts.IChecker"/> interface.
+    /// Base implementation of the <see cref="Contracts.IXmlChecker"/> interface.
     /// </summary>
-    public abstract class CheckerBase : Contracts.IChecker
+    public abstract class CheckerBase : Contracts.IXmlChecker
     {
         /// <summary>
         /// Checks the head element.

@@ -29,13 +29,15 @@ namespace RossKing.EPub.Console
         private static void Main(string[] args)
         {
             Parser.RunConsole(args, new Program());
+            System.Console.ReadKey();
         }
 
         /// <summary>
         /// Checks the ePub.
         /// </summary>
+        /// <param name="fileName">The filename to check.</param>
         [Verb(IsDefault = true)]
-        private void Check()
+        private void Check(string fileName)
         {
             var checker = this.container.GetExport<ViewModels.CheckEpubViewModel>();
 
@@ -45,7 +47,7 @@ namespace RossKing.EPub.Console
             }
 
             var checkerInstance = checker.Value;
-            checkerInstance.FileName = "C:\\Temp\\Dragons of Autumn Twilight - Margaret Weis.epub";
+            checkerInstance.FileName = fileName;
             checkerInstance.Check();
         }
 
@@ -64,6 +66,16 @@ namespace RossKing.EPub.Console
             this.container =
                 new CompositionContainer(
                     new AggregateCatalog(new AssemblyCatalog(assembly), new DirectoryCatalog(directory)));
+        }
+
+        [Error]
+        private void HandleError(ExceptionContext context)
+        {
+#if DEBUG
+            System.Console.WriteLine(context.Exception.ToString());
+            System.Console.ReadKey();
+#endif
+            context.ReThrow = true;
         }
     }
 }

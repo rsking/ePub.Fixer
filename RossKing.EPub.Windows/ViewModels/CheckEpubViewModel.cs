@@ -26,7 +26,7 @@ namespace RossKing.EPub.ViewModels
         /// Gets or sets the checkers.
         /// </summary>
         [ImportMany]
-        public IEnumerable<Services.Contracts.IChecker> Checkers { get; set; }
+        public IEnumerable<Services.Contracts.IXmlChecker> Checkers { get; set; }
 
         /// <summary>
         /// Checks the ePub.
